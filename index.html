@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PERT CPM</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--JS-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="fluid-container">
+        <nav class="avbar navbar-dark bg-dark navbar-expand-lg">
+            <h1 class="navbar-brand mx-4">PERT CPM</h1>
+        </nav>
+        <div class="card mx-4">
+            <h5 class="ml-3">Input Values</h5>
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-2">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="name">Activities</label>
+                            <input type="text" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="precesors">Predecessors</label>
+                            <input type="text" id="precesors" class="form-control">
+                            <small>Separate by commas. NO SPACES.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Duration(Day)</label>
+                            <input type="number" id="time" class="form-control" min="1" step="1">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="setDataRow()">Add to the table</button>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-10">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Activities</th>
+                                    <th scope="col">Predecessors </th>
+                                    <th scope="col">Duration(Days)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="iniTable">
+
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary" onclick="processIniTable()">Process the data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mx-4 mt-3">
+            <h5 class="m-3">Output Values</h5>
+            <div class="card-body">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Activities</th>
+                            <th scope="col">Predecessors</th>
+                            <th scope="col">Successors </th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Clearance</th>
+                            <th scope="col">Early Start</th>
+                            <th scope="col">Late Start</th>
+                            <th scope="col">Early Termination</th>
+                            <th scope="col">Late Termination</th>
+                        </tr>
+                    </thead>
+                    <tbody id="finalTable">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="mx-4 mb-4">
+                <h5>Critical Path</h5>
+                <p id="criticRoute"></p>
+            </div>
+            <small class="mx-4 my-2">You can drag the nodes to rearrange them.</small>
+            <div id="mynetwork" class="mx-4 mb-4"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
